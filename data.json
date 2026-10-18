@@ -1,0 +1,133 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Aarav Kumar",
+      "rollNo": "CS001",
+      "department": "CSE",
+      "year": 2
+    },
+    {
+      "id": 2,
+      "name": "Diya Sharma",
+      "rollNo": "CS002",
+      "department": "CSE",
+      "year": 2
+    },
+    {
+      "id": 3,
+      "name": "Rohan Patel",
+      "rollNo": "DS003",
+      "department": "Data Science",
+      "year": 2
+    },
+    {
+      "id": 4,
+      "name": "Ananya Das",
+      "rollNo": "IT004",
+      "department": "IT",
+      "year": 3
+    },
+    {
+      "id": 5,
+      "name": "Ishaan Rao",
+      "rollNo": "CS005",
+      "department": "CSE",
+      "year": 1
+    }
+  ],
+  "clubs": [
+    {
+      "id": 1,
+      "name": "Coding Club",
+      "category": "Technology"
+    },
+    {
+      "id": 2,
+      "name": "Photography Club",
+      "category": "Arts"
+    },
+    {
+      "id": 3,
+      "name": "Eco Club",
+      "category": "Environment"
+    }
+  ],
+  "memberships": [
+    {
+      "studentId": 1,
+      "clubId": 1
+    },
+    {
+      "studentId": 1,
+      "clubId": 2
+    },
+    {
+      "studentId": 2,
+      "clubId": 1
+    },
+    {
+      "studentId": 2,
+      "clubId": 3
+    },
+    {
+      "studentId": 3,
+      "clubId": 1
+    },
+    {
+      "studentId": 3,
+      "clubId": 2
+    },
+    {
+      "studentId": 4,
+      "clubId": 2
+    },
+    {
+      "studentId": 4,
+      "clubId": 3
+    },
+    {
+      "studentId": 5,
+      "clubId": 3
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "name": "Inter-College Hackathon",
+      "date": "2026-11-15",
+      "venue": "Innovation Lab",
+      "requiredClubIds": [
+        1
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Campus Photo Walk",
+      "date": "2026-11-20",
+      "venue": "Main Campus",
+      "requiredClubIds": [
+        2
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Green Campus Drive",
+      "date": "2026-11-25",
+      "venue": "Campus Garden",
+      "requiredClubIds": [
+        3
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Creative Tech Showcase",
+      "date": "2026-12-02",
+      "venue": "Auditorium",
+      "requiredClubIds": [
+        1,
+        2
+      ]
+    }
+  ]
+}

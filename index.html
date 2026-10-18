@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CampusConnect | Club & Event Management</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-mark">CC</span><div><strong>CampusConnect</strong><small>CLUB MANAGEMENT</small></div></div>
+    <nav>
+      <a class="nav-link active" href="#dashboard">▦ <span>Dashboard</span></a>
+      <a class="nav-link" href="#students">♙ <span>Students</span></a>
+      <a class="nav-link" href="#clubs">◎ <span>Clubs</span></a>
+      <a class="nav-link" href="#memberships">♧ <span>Memberships</span></a>
+      <a class="nav-link" href="#events">◷ <span>Events</span></a>
+      <a class="nav-link" href="#analysis">∩ <span>Set Analysis</span></a>
+    </nav>
+    <div class="sidebar-note"><span class="status-dot"></span> System online <small>Local development mode</small></div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div><p class="eyebrow">STUDENT LIFE / OVERVIEW</p><h1>Smart Club Management</h1><p class="muted">Manage memberships, discover shared members, and find event-eligible students.</p></div><div class="avatar">CC</div></header>
+    <div id="message" class="message hidden"></div>
+    <section id="dashboard" class="section">
+      <div class="section-heading"><div><h2>Dashboard</h2><p>A quick view of your campus community.</p></div><button class="btn btn-primary" onclick="refreshAll()">↻ Refresh data</button></div>
+      <div class="stats">
+        <article class="stat-card"><div class="stat-icon purple">♙</div><p>Total students</p><strong id="studentCount">—</strong><small>Registered students</small></article>
+        <article class="stat-card"><div class="stat-icon blue">◎</div><p>Active clubs</p><strong id="clubCount">—</strong><small>Student communities</small></article>
+        <article class="stat-card"><div class="stat-icon green">♧</div><p>Memberships</p><strong id="membershipCount">—</strong><small>Club registrations</small></article>
+        <article class="stat-card"><div class="stat-icon orange">◷</div><p>Upcoming events</p><strong id="eventCount">—</strong><small>Planned activities</small></article>
+      </div>
+      <div class="panel welcome"><div><p class="eyebrow">THE POWER OF SETS</p><h2>Find your campus connections.</h2><p>Compare any two clubs to discover common members, combined communities, and students belonging to only one club.</p><a class="btn btn-primary" href="#analysis">Explore set analysis →</a></div><div class="venn"><div class="circle circle-a">Club A</div><div class="circle circle-b">Club B</div><div class="venn-center">A ∩ B</div></div></div>
+    </section>
+    <section id="students" class="section">
+      <div class="section-heading"><div><h2>Students</h2><p>Register and manage student records.</p></div></div>
+      <form id="studentForm" class="panel form-grid">
+        <label>Full name<input name="name" required placeholder="e.g. Priya Das" /></label><label>Roll number<input name="rollNo" required placeholder="e.g. CS006" /></label><label>Department<input name="department" required placeholder="e.g. CSE" /></label><label>Year<select name="year" required><option value="">Select year</option><option value="1">1st Year</option><option value="2">2nd Year</option><option value="3">3rd Year</option><option value="4">4th Year</option></select></label><button class="btn btn-primary" type="submit">+ Add student</button>
+      </form>
+      <div class="panel table-panel"><div class="table-title"><h3>Student directory</h3><input id="studentSearch" class="search" placeholder="Search students..." /></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Roll number</th><th>Department</th><th>Year</th><th>Action</th></tr></thead><tbody id="studentsTable"></tbody></table></div></div>
+    </section>
+    <section id="clubs" class="section">
+      <div class="section-heading"><div><h2>Clubs</h2><p>Create clubs for different student interests.</p></div></div>
+      <form id="clubForm" class="panel form-grid"><label>Club name<input name="name" required placeholder="e.g. Robotics Club" /></label><label>Category<input name="category" required placeholder="e.g. Technology" /></label><button class="btn btn-primary" type="submit">+ Add club</button></form>
+      <div id="clubsGrid" class="club-grid"></div>
+    </section>
+    <section id="memberships" class="section">
+      <div class="section-heading"><div><h2>Memberships</h2><p>Connect a student to a club or remove a registration.</p></div></div>
+      <form id="membershipForm" class="panel form-grid"><label>Student<select name="studentId" id="membershipStudent" required></select></label><label>Club<select name="clubId" id="membershipClub" required></select></label><button class="btn btn-primary" type="submit">+ Add membership</button></form>
+      <div class="panel table-panel"><div class="table-title"><h3>Membership register</h3></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Club</th><th>Category</th><th>Action</th></tr></thead><tbody id="membershipsTable"></tbody></table></div></div>
+    </section>
+    <section id="events" class="section">
+      <div class="section-heading"><div><h2>Events</h2><p>Define event requirements and find eligible members.</p></div></div>
+      <form id="eventForm" class="panel form-grid"><label>Event name<input name="name" required placeholder="e.g. Tech Showcase" /></label><label>Date<input name="date" type="date" required /></label><label>Venue<input name="venue" required placeholder="e.g. Seminar Hall" /></label><fieldset class="club-picker"><legend>Required clubs (select all that apply)</legend><div id="eventClubOptions"></div></fieldset><button class="btn btn-primary" type="submit">+ Create event</button></form>
+      <div id="eventsGrid" class="event-grid"></div>
+    </section>
+    <section id="analysis" class="section">
+      <div class="section-heading"><div><h2>Set Operations Lab</h2><p>Use mathematical set operations to compare club memberships.</p></div></div>
+      <div class="panel analysis-controls"><label>Set A — First club<select id="clubA"></select></label><label>Set B — Second club<select id="clubB"></select></label><button class="btn btn-primary" id="analyzeBtn">Calculate sets</button></div>
+      <div class="stats mini-stats"><article class="stat-card"><p>Union · A ∪ B</p><strong id="unionCount">—</strong><small>Members in A or B or both</small></article><article class="stat-card"><p>Intersection · A ∩ B</p><strong id="intersectionCount">—</strong><small>Members common to both</small></article><article class="stat-card"><p>Difference · A − B</p><strong id="onlyACount">—</strong><small>Only in club A</small></article><article class="stat-card"><p>Difference · B − A</p><strong id="onlyBCount">—</strong><small>Only in club B</small></article></div>
+      <div id="analysisResults" class="analysis-grid"></div>
+      <div class="panel explanation"><h3>What the operations mean</h3><p><b>Union (A ∪ B):</b> students who belong to at least one of the selected clubs.</p><p><b>Intersection (A ∩ B):</b> students who are members of both clubs.</p><p><b>Difference (A − B):</b> students who belong to A but not B. B − A works in the opposite direction.</p><p><b>Event eligibility:</b> a student qualifies when they are a member of every club selected as required for that event.</p></div>
+    </section>
+    <footer>CampusConnect · Smart College Club Membership and Event Management System</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
