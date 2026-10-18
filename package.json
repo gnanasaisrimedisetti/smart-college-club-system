@@ -1,0 +1,8 @@
+{
+  "name": "smart-college-club-membership-system",
+  "version": "1.0.0",
+  "description": "Manage student club memberships and event eligibility using set operations.",
+  "main": "server.js",
+  "scripts": { "start": "node server.js", "dev": "node server.js" },
+  "dependencies": { "express": "^4.21.2" }
+}
